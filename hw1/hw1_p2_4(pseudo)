@@ -1,0 +1,20 @@
+sortL(L)
+    head = L,ptr = L,prev = NULL,neg_head = NULL
+    while ptr != NULL:
+        if ptr->data < 0:
+            Node *next = ptr->next
+            neg_head = genNode(ptr->data, neg_head)
+            if ptr == head:
+                head = next
+            free(ptr)
+            ptr = next
+            if prev != NULL:
+                prev->next = ptr
+        else:
+            prev = ptr
+            ptr = ptr->next
+    if prev != NULL:
+        prev->next = neg_head
+    else: // 從頭到尾都是負數
+        head = neg_head
+    return head

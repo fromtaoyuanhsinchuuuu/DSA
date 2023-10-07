@@ -1,0 +1,34 @@
+merge(l1, l2){
+    now1 = l1.head
+    now2 = l1.head
+    // 初始化 Prev並設定開頭
+    head = min(l1.head, l2.head)
+    prev = head
+    if prev == now1:
+        now1 = now1.next
+    else:
+        now2 = now2.next
+    while now1 != NULL && now2 != NULL:
+        now = min(now1, now2)
+        prev.next = now
+        if now == now1: /* 更新now1或now2 */
+            now1 = now1.next
+        else:
+            now2 = now2.next
+    /* 接到剩下還沒完的那個ll */
+    if now1 != NULL:
+        prev.next = now1
+    else:
+        prev.next = now2
+    return head
+}
+
+reverse(L)
+    cursor = L.head
+    prev = NIL
+    while cursor != NIL:
+        next = cursor.next
+        cursor.next = prev
+        prev = cursor
+        cursor = next;
+    L.head = cursor
